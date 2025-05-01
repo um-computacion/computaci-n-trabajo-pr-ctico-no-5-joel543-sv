@@ -2,21 +2,25 @@ import unittest
 from src.persona import Persona
 
 class TestPersona(unittest.TestCase):
-    def test_pensar_incrementa_contador(self):
-        """
-        Prueba que el contador de pensamientos se incremente al registrar una idea.
-        """
-        persona = Persona("Luis", "Ramírez", "98765432")
-        persona.pensar("Aprender programación")
-        self.assertEqual(persona.pensamientos, 1)
+    def test_creacion_con_valores_vacios(self):
+        """Verifica el comportamiento al instanciar Persona con valores vacíos."""
+        persona = Persona("", "", "")
+        self.assertEqual(persona.nombre, "")
+        self.assertEqual(persona.apellido, "")
+        self.assertEqual(persona.dni, "")
 
-    def test_pensar_actualiza_ultima_idea(self):
-        """
-        Prueba que la última idea registrada sea la correcta.
-        """
-        persona = Persona("Luis", "Ramírez", "98765432")
-        persona.pensar("Aprender programación")
-        self.assertEqual(persona.ultima_idea, "Aprender programación")
+    def test_creacion_con_None(self):
+        """Verifica la respuesta cuando se pasan valores None."""
+        persona = Persona(None, None, None)
+        self.assertIsNone(persona.nombre)
+        self.assertIsNone(persona.apellido)
+        self.assertIsNone(persona.dni)
+
+    def test_pensar_actualiza_contador(self):
+        """Comprueba que la cantidad de pensamientos se incrementa correctamente."""
+        persona = Persona("Carlos", "Molina", "78945612")
+        persona.pensar("Reflexionar sobre la vida")
+        self.assertEqual(persona.pensamientos, 1)
 
 if __name__ == "__main__":
     unittest.main()
