@@ -2,22 +2,21 @@ import unittest
 from src.persona import Persona
 
 class TestPersona(unittest.TestCase):
-    def test_crear_persona(self):
+    def test_pensar_incrementa_contador(self):
         """
-        Prueba la creación de una instancia de Persona.
+        Prueba que el contador de pensamientos se incremente al registrar una idea.
         """
-        persona = Persona("Carlos", "Gutiérrez", "87654321")
-        self.assertEqual(persona.nombre, "Carlos")
-        self.assertEqual(persona.apellido, "Gutiérrez")
-        self.assertEqual(persona.dni, "87654321")
+        persona = Persona("Luis", "Ramírez", "98765432")
+        persona.pensar("Aprender programación")
+        self.assertEqual(persona.pensamientos, 1)
 
-    def test_repr_persona(self):
+    def test_pensar_actualiza_ultima_idea(self):
         """
-        Prueba la representación en cadena de una instancia de Persona.
+        Prueba que la última idea registrada sea la correcta.
         """
-        persona = Persona("Carlos", "Gutiérrez", "87654321")
-        esperado = "Persona: DNI: 87654321 Nombre: Carlos Apellido: Gutiérrez Última Idea: <sin ideas por ahora>"
-        self.assertEqual(str(persona), esperado)
+        persona = Persona("Luis", "Ramírez", "98765432")
+        persona.pensar("Aprender programación")
+        self.assertEqual(persona.ultima_idea, "Aprender programación")
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,6 +1,6 @@
 class Persona:
     """
-    Representa a una persona con información básica.
+    Representa a una persona con información básica y capacidad de pensamiento.
     """
 
     def __init__(self, nombre, apellido, dni):
@@ -16,7 +16,17 @@ class Persona:
         self.apellido = apellido
         self.dni = dni
         self.pensamientos = 0
-        self.ultima_idea = "<sin ideas por ahora>"
+        self.ultima_idea = "<sin ideas aún>"
+
+    def pensar(self, idea):
+        """
+        Registra un pensamiento en la persona.
+
+        Parámetros:
+            idea (str): Descripción de la idea pensada.
+        """
+        self.pensamientos += 1
+        self.ultima_idea = idea
 
     def __repr__(self):
         """
